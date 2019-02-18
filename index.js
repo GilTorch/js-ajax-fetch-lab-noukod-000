@@ -19,6 +19,13 @@ function forkRepo() {
       Authorization:`token ${getToken()}`
     }
   })
+  .then((response)=>response.json())
+  .then(showResults);
+}
+
+function showResults(jsonResponse){
+  const resultDiv=document.querySelector("#results");
+  resultDiv.innerHTML=jsonResponse.html_url;
 }
 
 function getToken() {
